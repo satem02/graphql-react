@@ -1,8 +1,8 @@
 const graphql = require("graphql");
 const { GraphQLObjectType, GraphQLInt, GraphQLString } = graphql;
 
-const BikeType = new GraphQLObjectType({
-  name: "Bike",
+const VehicleStatus  = new GraphQLObjectType({
+  name: "VehicleStatus",
   fields: () => ({
     bike_id: { type: GraphQLString },
     lat: { type: graphql.GraphQLFloat },
@@ -15,4 +15,4 @@ const BikeType = new GraphQLObjectType({
   }),
 });
 
-module.exports = BikeType;
+module.exports = VehicleStatus ;

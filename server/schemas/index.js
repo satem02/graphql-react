@@ -2,17 +2,17 @@ const graphql = require("graphql");
 const {
     GraphQLObjectType,
     GraphQLSchema,
-    GraphQLString,
     GraphQLList,
+    GraphQLString
 } = graphql;
 const bikeData = require("../mock-data.json");
-const BikeType = require("./type-defs/bike-type");
+const VehicleStatusType  = require("./type-defs/vehicle-status-type");
 
 const RootQuery = new GraphQLObjectType({
     name: "RootQueryType",
     fields: {
         bikes: {
-            type: new GraphQLList(BikeType),
+            type: new GraphQLList(VehicleStatusType),
             args: { bike_id: { type: GraphQLString } },
             resolve(parent, args) {
                 var bikeId = args.bike_id;
