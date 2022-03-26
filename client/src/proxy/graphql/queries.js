@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const LOAD_BIKES = gql`
-  query {
-    bikes {
+  query ($bike_id : String) {
+    bikes( bike_id : $bike_id) {
         bike_id
         lat
         lon
