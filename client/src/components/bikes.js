@@ -15,6 +15,8 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { styled } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
+import config from "../config";
+import UserLogin from "./user-login";
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -39,11 +41,28 @@ function Bikes() {
     }
   }, [data]);
 
+  async function loginUser() {
+    var loginModel = new {
+      username:config.USER_NAME,
+      password:config.PASSWORD
+  };
+    return fetch(config.LOGIN_ENDPOINT, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(loginModel)
+    })
+      .then(data =>localStorage.setItem('token', data) )
+   }
+
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Item>
+            <UserLogin></UserLogin>
             <TextField 
               id="bike-id" 
               label="Bike Id" 
@@ -107,7 +126,6 @@ function Bikes() {
 
       </Grid>
     </Box>
-
   );
 }
 
